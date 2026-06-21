@@ -4,7 +4,7 @@ import teamsRouter from './routes/teams.js';
 import activitiesRouter from './routes/activities.js';
 import leaderboardRouter from './routes/leaderboard.js';
 import workoutsRouter from './routes/workouts.js';
-import { connectToDatabase, MONGO_URI } from './config/database.js';
+import { connectToDatabase, MONGO_URI } from './database.js';
 
 const app = express();
 const PORT = 8000;

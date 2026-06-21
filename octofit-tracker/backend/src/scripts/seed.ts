@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { connectToDatabase, MONGO_URI } from '../config/database.js';
+import { connectToDatabase, MONGO_URI } from '../database.js';
 import { UserModel } from '../models/user.js';
 import { TeamModel } from '../models/team.js';
 import { ActivityModel } from '../models/activity.js';
