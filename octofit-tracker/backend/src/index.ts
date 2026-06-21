@@ -1,15 +1,28 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import usersRouter from './routes/users.js';
+import teamsRouter from './routes/teams.js';
+import activitiesRouter from './routes/activities.js';
+import leaderboardRouter from './routes/leaderboard.js';
+import workoutsRouter from './routes/workouts.js';
 
 const app = express();
 const PORT = 8000;
-const MONGO_URI = 'mongodb://127.0.0.1:27017/octofit-tracker';
+const MONGO_URI = 'mongodb://127.0.0.1:27017/octofit_db';
+const CODESPACE_NAME = process.env.CODESPACE_NAME;
+const API_HOST = CODESPACE_NAME ? `https://${CODESPACE_NAME}-8000.githubpreview.dev` : `http://127.0.0.1:${PORT}`;
 
 app.use(express.json());
 
 app.get('/health', (_req, res) => {
-  res.json({ status: 'ok', service: 'OctoFit Tracker backend' });
+  res.json({ status: 'ok', service: 'OctoFit Tracker backend', apiUrl: API_HOST });
 });
+
+app.use('/api/users', usersRouter);
+app.use('/api/teams', teamsRouter);
+app.use('/api/activities', activitiesRouter);
+app.use('/api/leaderboard', leaderboardRouter);
+app.use('/api/workouts', workoutsRouter);
 
 mongoose.set('strictQuery', false);
 
@@ -18,7 +31,7 @@ mongoose
   .then(() => {
     console.log(`Connected to MongoDB at ${MONGO_URI}`);
     app.listen(PORT, () => {
-      console.log(`Server listening on http://0.0.0.0:${PORT}`);
+      console.log(`Server listening on ${API_HOST}`);
     });
   })
   .catch((error) => {
