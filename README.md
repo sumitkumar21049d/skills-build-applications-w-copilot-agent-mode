@@ -1,12 +1,11 @@
-# Build Applications with GitHub Copilot Agent Mode
+## Environment Configuration
 
-<img src="https://octodex.github.com/images/Professortocat_v2.png" align="right" height="200px" />
+This project uses Vite environment variables to configure the frontend API.
 
-Hey sumitkumar21049d!
+### Required Variable
 
-Mona here. I'm done preparing your exercise. Hope you enjoy! 💚
+`VITE_CODESPACE_NAME` must be defined for the application to correctly connect to the backend API when running in GitHub Codespaces.
 
-Remember, it's self-paced so feel free to take a break! ☕️
+### Example (.env.local)
 
-[![](https://img.shields.io/badge/Go%20to%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/sumitkumar21049d/skills-build-applications-w-copilot-agent-mode/issues/1)
-
+Create a file named `.env.local` in the frontend root directory and add:
