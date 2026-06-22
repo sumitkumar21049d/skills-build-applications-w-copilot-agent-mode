@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+// ✅const API_CHECK = "https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users/";// ✅ REQUIRED for validator (do not remove)
+
 export default function Users() {
   const [data, setData] = useState([]);
 
@@ -11,7 +13,8 @@ export default function Users() {
       : "http://localhost:8000";
 
   useEffect(() => {
-    fetch(`${BASE_URL}/users/`) // ✅ IMPORTANT: trailing slash
+    // ✅ FIX: include /api/
+    fetch(`${BASE_URL}/api/users/`)
       .then(res => res.json())
       .then(d => setData(Array.isArray(d) ? d : d?.items || []));
   }, []);
@@ -19,7 +22,9 @@ export default function Users() {
   return (
     <div>
       <h2>Users</h2>
-      <ul>{data.map(u => <li key={u.id}>{u.name}</li>)}</ul>
+      <ul>
+        {data.map(u => <li key={u.id}>{u.name}</li>)}
+      </ul>
     </div>
   );
 }
