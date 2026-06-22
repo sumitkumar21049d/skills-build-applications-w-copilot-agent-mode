@@ -5,7 +5,7 @@ export default function Leaderboard() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_BASE}/leaderboard`)
+    fetch(`${API_BASE}/leaderboard/`)
       .then(res => res.json())
       .then(d => setData(Array.isArray(d) ? d : d?.items || []));
   }, []);

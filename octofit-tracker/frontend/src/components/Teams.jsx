@@ -5,7 +5,7 @@ export default function Teams() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_BASE}/teams`)
+    fetch(`${API_BASE}/teams/`)
       .then(res => res.json())
       .then(d => setData(Array.isArray(d) ? d : d?.items || []));
   }, []);

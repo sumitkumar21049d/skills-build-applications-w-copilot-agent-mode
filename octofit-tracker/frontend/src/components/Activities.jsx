@@ -5,7 +5,7 @@ export default function Activities() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_BASE}/activities`)
+    fetch(`${API_BASE}/activities/`) // ✅ IMPORTANT: trailing slash
       .then(res => res.json())
       .then(d => setData(Array.isArray(d) ? d : d?.items || []));
   }, []);

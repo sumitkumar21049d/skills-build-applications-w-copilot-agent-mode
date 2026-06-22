@@ -5,7 +5,7 @@ export default function Workouts() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_BASE}/workouts`)
+    fetch(`${API_BASE}/workouts/`)
       .then(res => res.json())
       .then(d => setData(Array.isArray(d) ? d : d?.items || []));
   }, []);
